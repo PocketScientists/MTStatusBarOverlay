@@ -879,11 +879,33 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 		self.smallFrame = CGRectMake(self.frame.size.width - kWidthSmall, 0.0f, kWidthSmall, self.frame.size.height);
 	}else if (orientation == UIDeviceOrientationLandscapeLeft) {
 		self.transform = CGAffineTransformMakeRotation(pi * (90.f) / 180.0f);
-		self.frame = CGRectMake(kScreenWidth - kStatusBarHeight,0, kStatusBarHeight, kScreenHeight);
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+        NSString *version = [[UIDevice currentDevice] systemVersion];
+        int ver = [version intValue];
+        if (ver <= 7){
+            self.frame = CGRectMake(kScreenWidth - kStatusBarHeight,0, kStatusBarHeight, kScreenHeight);
+        }
+        else {
+            self.frame = CGRectMake(kScreenHeight - kStatusBarHeight,0, kStatusBarHeight, kScreenWidth);
+        }
+#else
+        self.frame = CGRectMake(kScreenWidth - kStatusBarHeight,0, kStatusBarHeight, kScreenHeight);
+#endif
 		self.smallFrame = CGRectMake(kScreenHeight-kWidthSmall,0,kWidthSmall,kStatusBarHeight);
 	} else if (orientation == UIDeviceOrientationLandscapeRight) {
 		self.transform = CGAffineTransformMakeRotation(pi * (-90.f) / 180.0f);
-		self.frame = CGRectMake(0.f,0.f, kStatusBarHeight, kScreenHeight);
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+        NSString *version = [[UIDevice currentDevice] systemVersion];
+        int ver = [version intValue];
+        if (ver <= 7){
+            self.frame = CGRectMake(0.f,0.f, kStatusBarHeight, kScreenHeight);
+        }
+        else {
+            self.frame = CGRectMake(0.f,0.f, kStatusBarHeight, kScreenWidth);
+        }
+#else
+        self.frame = CGRectMake(0.f,0.f, kStatusBarHeight, kScreenHeight);
+#endif
 		self.smallFrame = CGRectMake(kScreenHeight-kWidthSmall,0.f, kWidthSmall, kStatusBarHeight);
 	} else if (orientation == UIDeviceOrientationPortraitUpsideDown) {
 		self.transform = CGAffineTransformMakeRotation(pi);
@@ -1392,9 +1414,22 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
     
     UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     
-    return (UIInterfaceOrientationIsLandscape(interfaceOrientation) ? 
-            CGRectMake(0, 0, kScreenHeight, kStatusBarHeight) : 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+    NSString *version = [[UIDevice currentDevice] systemVersion];
+    int ver = [version intValue];
+    if (ver <= 7){
+        return (UIInterfaceOrientationIsLandscape(interfaceOrientation) ?
+                CGRectMake(0, 0, kScreenHeight, kStatusBarHeight) :
+                CGRectMake(0, 0, kScreenWidth, kStatusBarHeight));
+    }
+    else {
+        return CGRectMake(0, 0, kScreenWidth, kStatusBarHeight);
+    }
+#else
+    return (UIInterfaceOrientationIsLandscape(interfaceOrientation) ?
+            CGRectMake(0, 0, kScreenHeight, kStatusBarHeight) :
             CGRectMake(0, 0, kScreenWidth, kStatusBarHeight));
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////
