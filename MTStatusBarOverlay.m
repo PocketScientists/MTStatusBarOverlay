@@ -1064,7 +1064,7 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 							  delay:0.
 							options:UIViewAnimationOptionCurveEaseIn
 						 animations: ^{
-							 int y = 0;
+							 CGFloat y = 0;
                              
 							 // if history is enabled let the detailView "grow" with
 							 // the number of messages in the history up until the set maximum
