@@ -187,6 +187,8 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 @property (nonatomic, strong) UITableView *historyTableView;
 @property (nonatomic, assign) BOOL forcedToHide;
 
+@property (nonatomic, assign) UIInterfaceOrientation initialOrientation;
+
 // intern method that posts a new entry to the message-queue
 - (void)postMessage:(NSString *)message type:(MTMessageType)messageType duration:(NSTimeInterval)duration animated:(BOOL)animated immediate:(BOOL)immediate;
 // intern method that clears the messageQueue and then posts a new entry to it
@@ -277,9 +279,10 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 #pragma mark Lifecycle
 ////////////////////////////////////////////////////////////////////////
 
-- (id)initWithFrame:(CGRect)frame {
-    if ((self = [super initWithFrame:frame])) {
+- (id)init {
+    if ((self = [super init])) {
         CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
+        _initialOrientation = [UIApplication sharedApplication].statusBarOrientation;
         
 		// only use height of 20px even is status bar is doubled
 		statusBarFrame.size.height = statusBarFrame.size.height == 2*kStatusBarHeight ? kStatusBarHeight : statusBarFrame.size.height;
@@ -872,46 +875,79 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 		[self setDetailViewHidden:YES animated:NO];
 	}
     
-	CGFloat pi = (CGFloat)M_PI;
-	if (orientation == UIDeviceOrientationPortrait) {
-		self.transform = CGAffineTransformIdentity;
-		self.frame = CGRectMake(0.f,0.f,kScreenWidth,kStatusBarHeight);
-		self.smallFrame = CGRectMake(self.frame.size.width - kWidthSmall, 0.0f, kWidthSmall, self.frame.size.height);
-	}else if (orientation == UIDeviceOrientationLandscapeLeft) {
-		self.transform = CGAffineTransformMakeRotation(pi * (90.f) / 180.0f);
+    CGFloat pi = (CGFloat)M_PI;
+
+    NSString *version = [[UIDevice currentDevice] systemVersion];
+    int ver = [version intValue];
+
+    if (ver >= 9) {
+        NSInteger diff = [self angleForInterfaceOrientation:orientation] - [self angleForInterfaceOrientation:self.initialOrientation];
+        diff = (diff + 4) % 4;
+        CGFloat angleDiff = (CGFloat)(diff * M_PI_2);
+        
+        self.transform = CGAffineTransformMakeRotation(angleDiff);
+        
+        switch (diff) {
+            case 0:
+                self.frame = CGRectMake(0.f,0.f,kScreenWidth,kStatusBarHeight);
+                self.smallFrame = CGRectMake(self.frame.size.width - kWidthSmall, 0.0f, kWidthSmall, self.frame.size.height);
+                break;
+            case 1:
+                self.frame = CGRectMake(kScreenHeight - kStatusBarHeight,0, kStatusBarHeight, kScreenWidth);
+                self.smallFrame = CGRectMake(kScreenHeight-kWidthSmall,0,kWidthSmall,kStatusBarHeight);
+                break;
+            case 2:
+                self.frame = CGRectMake(0.f,kScreenHeight - kStatusBarHeight,kScreenWidth,kStatusBarHeight);
+                self.smallFrame = CGRectMake(self.frame.size.width - kWidthSmall, 0.f, kWidthSmall, self.frame.size.height);
+                break;
+            case 3:
+                self.frame = CGRectMake(0.f,0.f, kStatusBarHeight, kScreenWidth);
+                self.smallFrame = CGRectMake(kScreenHeight-kWidthSmall,0.f, kWidthSmall, kStatusBarHeight);
+                break;
+            default:
+                break;
+        }
+
+    }
+    else {
+        if (orientation == UIDeviceOrientationPortrait) {
+            self.transform = CGAffineTransformIdentity;
+            self.frame = CGRectMake(0.f,0.f,kScreenWidth,kStatusBarHeight);
+            self.smallFrame = CGRectMake(self.frame.size.width - kWidthSmall, 0.0f, kWidthSmall, self.frame.size.height);
+        } else if (orientation == UIDeviceOrientationLandscapeLeft) {
+            self.transform = CGAffineTransformMakeRotation(pi * (90.f) / 180.0f);
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
-        NSString *version = [[UIDevice currentDevice] systemVersion];
-        int ver = [version intValue];
-        if (ver <= 7){
+            if (ver <= 7){
+                self.frame = CGRectMake(kScreenWidth - kStatusBarHeight,0, kStatusBarHeight, kScreenHeight);
+            }
+            else {
+                self.frame = CGRectMake(kScreenHeight - kStatusBarHeight,0, kStatusBarHeight, kScreenWidth);
+            }
+#else
             self.frame = CGRectMake(kScreenWidth - kStatusBarHeight,0, kStatusBarHeight, kScreenHeight);
-        }
-        else {
-            self.frame = CGRectMake(kScreenHeight - kStatusBarHeight,0, kStatusBarHeight, kScreenWidth);
-        }
-#else
-        self.frame = CGRectMake(kScreenWidth - kStatusBarHeight,0, kStatusBarHeight, kScreenHeight);
 #endif
-		self.smallFrame = CGRectMake(kScreenHeight-kWidthSmall,0,kWidthSmall,kStatusBarHeight);
-	} else if (orientation == UIDeviceOrientationLandscapeRight) {
-		self.transform = CGAffineTransformMakeRotation(pi * (-90.f) / 180.0f);
+            self.smallFrame = CGRectMake(kScreenHeight-kWidthSmall,0,kWidthSmall,kStatusBarHeight);
+        } else if (orientation == UIDeviceOrientationLandscapeRight) {
+            self.transform = CGAffineTransformMakeRotation(pi * (-90.f) / 180.0f);
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
-        NSString *version = [[UIDevice currentDevice] systemVersion];
-        int ver = [version intValue];
-        if (ver <= 7){
-            self.frame = CGRectMake(0.f,0.f, kStatusBarHeight, kScreenHeight);
-        }
-        else {
-            self.frame = CGRectMake(0.f,0.f, kStatusBarHeight, kScreenWidth);
-        }
+            NSString *version = [[UIDevice currentDevice] systemVersion];
+            int ver = [version intValue];
+            if (ver <= 7){
+                self.frame = CGRectMake(0.f,0.f, kStatusBarHeight, kScreenHeight);
+            }
+            else {
+                self.frame = CGRectMake(0.f,0.f, kStatusBarHeight, kScreenWidth);
+            }
 #else
-        self.frame = CGRectMake(0.f,0.f, kStatusBarHeight, kScreenHeight);
+            self.frame = CGRectMake(0.f,0.f, kStatusBarHeight, kScreenHeight);
 #endif
-		self.smallFrame = CGRectMake(kScreenHeight-kWidthSmall,0.f, kWidthSmall, kStatusBarHeight);
-	} else if (orientation == UIDeviceOrientationPortraitUpsideDown) {
-		self.transform = CGAffineTransformMakeRotation(pi);
-		self.frame = CGRectMake(0.f,kScreenHeight - kStatusBarHeight,kScreenWidth,kStatusBarHeight);
-		self.smallFrame = CGRectMake(self.frame.size.width - kWidthSmall, 0.f, kWidthSmall, self.frame.size.height);
-	}
+            self.smallFrame = CGRectMake(kScreenHeight-kWidthSmall,0.f, kWidthSmall, kStatusBarHeight);
+        } else if (orientation == UIDeviceOrientationPortraitUpsideDown) {
+            self.transform = CGAffineTransformMakeRotation(pi);
+            self.frame = CGRectMake(0.f,kScreenHeight - kStatusBarHeight,kScreenWidth,kStatusBarHeight);
+            self.smallFrame = CGRectMake(self.frame.size.width - kWidthSmall, 0.f, kWidthSmall, self.frame.size.height);
+        }
+    }
     
     self.backgroundView.frame = [self backgroundViewFrameForStatusBarInterfaceOrientation];
     
@@ -1024,7 +1060,7 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 							 self.statusLabel1.hidden = NO;
 							 self.statusLabel2.hidden = NO;
                              
-                             if ([activityIndicator_ respondsToSelector:@selector(setColor:)]) {
+                             if ([self->activityIndicator_ respondsToSelector:@selector(setColor:)]) {
                                  CGRect frame = self.statusLabel1.frame;
                                  frame.size.width = self.backgroundView.frame.size.width-60.f;
                                  self.statusLabel1.frame = frame;
@@ -1064,12 +1100,12 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 							  delay:0.
 							options:UIViewAnimationOptionCurveEaseIn
 						 animations: ^{
-							 CGFloat y = 0;
+							 CGFloat y = 0.f;
                              
 							 // if history is enabled let the detailView "grow" with
 							 // the number of messages in the history up until the set maximum
 							 if (self.detailViewMode == MTDetailViewModeHistory) {
-								 y = -(kMaxHistoryTableRowCount - MIN(self.messageHistory.count, kMaxHistoryTableRowCount)) * kHistoryTableRowHeight;
+								 y = floorf(-(kMaxHistoryTableRowCount - MIN(self.messageHistory.count, kMaxHistoryTableRowCount)) * kHistoryTableRowHeight);
                                  
 								 self.historyTableView.frame = CGRectMake(self.historyTableView.frame.origin.x, kStatusBarHeight - y,
 																		  self.historyTableView.frame.size.width, self.historyTableView.frame.size.height);
@@ -1430,6 +1466,21 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
             CGRectMake(0, 0, kScreenHeight, kStatusBarHeight) :
             CGRectMake(0, 0, kScreenWidth, kStatusBarHeight));
 #endif
+}
+
+- (NSInteger)angleForInterfaceOrientation:(UIInterfaceOrientation)orientation {
+    switch (orientation) {
+        case UIInterfaceOrientationPortrait:
+            return 0;
+        case UIInterfaceOrientationLandscapeLeft:
+            return 1;
+        case UIInterfaceOrientationPortraitUpsideDown:
+            return 2;
+        case UIInterfaceOrientationLandscapeRight:
+            return 3;
+        default:
+            return 0.f;
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////
