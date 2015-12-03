@@ -279,7 +279,7 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
 #pragma mark Lifecycle
 ////////////////////////////////////////////////////////////////////////
 
-- (id)init {
+- (instancetype)init {
     if ((self = [super init])) {
         CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
         _initialOrientation = [UIApplication sharedApplication].statusBarOrientation;
