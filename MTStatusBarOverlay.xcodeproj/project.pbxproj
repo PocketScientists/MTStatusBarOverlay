@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		39847F2412B2CE5E006F8A53 /* MTStatusBarOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 39847F2212B2CE5E006F8A53 /* MTStatusBarOverlay.h */; };
 		39847F2512B2CE5E006F8A53 /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 39847F2312B2CE5E006F8A53 /* MTStatusBarOverlay.m */; };
-		A9478ED421170F6F000215DA /* MTStatusBarOverlayFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = A9478ED221170F6F000215DA /* MTStatusBarOverlayFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9478ED421170F6F000215DA /* MTStatusBarOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = A9478ED221170F6F000215DA /* MTStatusBarOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9478ED821171015000215DA /* MTStatusBarOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 39847F2212B2CE5E006F8A53 /* MTStatusBarOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9478ED92117101B000215DA /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 39847F2312B2CE5E006F8A53 /* MTStatusBarOverlay.m */; };
 		AA747D9F0F9514B9006C5449 /* MTStatusBarOverlay_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* MTStatusBarOverlay_Prefix.pch */; };
@@ -21,7 +21,7 @@
 		39847F2312B2CE5E006F8A53 /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		9B7BD5B81447310F007D213A /* Readme.mdown */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.mdown; sourceTree = "<group>"; };
 		A9478ED021170F6F000215DA /* MTStatusBarOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MTStatusBarOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9478ED221170F6F000215DA /* MTStatusBarOverlayFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlayFramework.h; sourceTree = "<group>"; };
+		A9478ED221170F6F000215DA /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlay.h; sourceTree = "<group>"; };
 		A9478ED321170F6F000215DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* MTStatusBarOverlay_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlay_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,7 +61,7 @@
 			children = (
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
-				A9478ED121170F6F000215DA /* MTStatusBarOverlayFramework */,
+				A9478ED121170F6F000215DA /* MTStatusBarOverlay */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -94,13 +94,13 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		A9478ED121170F6F000215DA /* MTStatusBarOverlayFramework */ = {
+		A9478ED121170F6F000215DA /* MTStatusBarOverlay */ = {
 			isa = PBXGroup;
 			children = (
-				A9478ED221170F6F000215DA /* MTStatusBarOverlayFramework.h */,
+				A9478ED221170F6F000215DA /* MTStatusBarOverlay.h */,
 				A9478ED321170F6F000215DA /* Info.plist */,
 			);
-			path = MTStatusBarOverlayFramework;
+			path = MTStatusBarOverlay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -111,7 +111,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9478ED821171015000215DA /* MTStatusBarOverlay.h in Headers */,
-				A9478ED421170F6F000215DA /* MTStatusBarOverlayFramework.h in Headers */,
+				A9478ED421170F6F000215DA /* MTStatusBarOverlay.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +376,7 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = MTStatusBarOverlayFramework/Info.plist;
+				INFOPLIST_FILE = MTStatusBarOverlay/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -421,7 +421,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = MTStatusBarOverlayFramework/Info.plist;
+				INFOPLIST_FILE = MTStatusBarOverlay/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
