@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		39847F2412B2CE5E006F8A53 /* MTStatusBarOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 39847F2212B2CE5E006F8A53 /* MTStatusBarOverlay.h */; };
 		39847F2512B2CE5E006F8A53 /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 39847F2312B2CE5E006F8A53 /* MTStatusBarOverlay.m */; };
-		A9478ED421170F6F000215DA /* MTStatusBarOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = A9478ED221170F6F000215DA /* MTStatusBarOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A9478ED821171015000215DA /* MTStatusBarOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 39847F2212B2CE5E006F8A53 /* MTStatusBarOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A9478ED92117101B000215DA /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 39847F2312B2CE5E006F8A53 /* MTStatusBarOverlay.m */; };
+		A9478EE62117158D000215DA /* MTStatusBarOverlayKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A9478EE42117158D000215DA /* MTStatusBarOverlayKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9478EEA211715A8000215DA /* MTStatusBarOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 39847F2212B2CE5E006F8A53 /* MTStatusBarOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9478EEB211715AF000215DA /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 39847F2312B2CE5E006F8A53 /* MTStatusBarOverlay.m */; };
 		AA747D9F0F9514B9006C5449 /* MTStatusBarOverlay_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* MTStatusBarOverlay_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -20,16 +20,16 @@
 		39847F2212B2CE5E006F8A53 /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlay.h; sourceTree = "<group>"; };
 		39847F2312B2CE5E006F8A53 /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		9B7BD5B81447310F007D213A /* Readme.mdown */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.mdown; sourceTree = "<group>"; };
-		A9478ED021170F6F000215DA /* MTStatusBarOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MTStatusBarOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9478ED221170F6F000215DA /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlay.h; sourceTree = "<group>"; };
-		A9478ED321170F6F000215DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9478EE22117158D000215DA /* MTStatusBarOverlayKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MTStatusBarOverlayKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9478EE42117158D000215DA /* MTStatusBarOverlayKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlayKit.h; sourceTree = "<group>"; };
+		A9478EE52117158D000215DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* MTStatusBarOverlay_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlay_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libMTStatusBarOverlay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMTStatusBarOverlay.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A9478ECC21170F6F000215DA /* Frameworks */ = {
+		A9478EDE2117158D000215DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -51,7 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AAC07E0554694100DB518D /* libMTStatusBarOverlay.a */,
-				A9478ED021170F6F000215DA /* MTStatusBarOverlay.framework */,
+				A9478EE22117158D000215DA /* MTStatusBarOverlayKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,7 +61,7 @@
 			children = (
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
-				A9478ED121170F6F000215DA /* MTStatusBarOverlay */,
+				A9478EE32117158D000215DA /* MTStatusBarOverlayKit */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -94,24 +94,24 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		A9478ED121170F6F000215DA /* MTStatusBarOverlay */ = {
+		A9478EE32117158D000215DA /* MTStatusBarOverlayKit */ = {
 			isa = PBXGroup;
 			children = (
-				A9478ED221170F6F000215DA /* MTStatusBarOverlay.h */,
-				A9478ED321170F6F000215DA /* Info.plist */,
+				A9478EE42117158D000215DA /* MTStatusBarOverlayKit.h */,
+				A9478EE52117158D000215DA /* Info.plist */,
 			);
-			path = MTStatusBarOverlay;
+			path = MTStatusBarOverlayKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		A9478ECD21170F6F000215DA /* Headers */ = {
+		A9478EDF2117158D000215DA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9478ED821171015000215DA /* MTStatusBarOverlay.h in Headers */,
-				A9478ED421170F6F000215DA /* MTStatusBarOverlay.h in Headers */,
+				A9478EEA211715A8000215DA /* MTStatusBarOverlay.h in Headers */,
+				A9478EE62117158D000215DA /* MTStatusBarOverlayKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,22 +127,22 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A9478ECF21170F6F000215DA /* MTStatusBarOverlayFramework */ = {
+		A9478EE12117158D000215DA /* MTStatusBarOverlayKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A9478ED721170F6F000215DA /* Build configuration list for PBXNativeTarget "MTStatusBarOverlayFramework" */;
+			buildConfigurationList = A9478EE72117158D000215DA /* Build configuration list for PBXNativeTarget "MTStatusBarOverlayKit" */;
 			buildPhases = (
-				A9478ECB21170F6F000215DA /* Sources */,
-				A9478ECC21170F6F000215DA /* Frameworks */,
-				A9478ECD21170F6F000215DA /* Headers */,
-				A9478ECE21170F6F000215DA /* Resources */,
+				A9478EDD2117158D000215DA /* Sources */,
+				A9478EDE2117158D000215DA /* Frameworks */,
+				A9478EDF2117158D000215DA /* Headers */,
+				A9478EE02117158D000215DA /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = MTStatusBarOverlayFramework;
-			productName = MTStatusBarOverlayFramework;
-			productReference = A9478ED021170F6F000215DA /* MTStatusBarOverlay.framework */;
+			name = MTStatusBarOverlayKit;
+			productName = MTStatusBarOverlayKit;
+			productReference = A9478EE22117158D000215DA /* MTStatusBarOverlayKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D2AAC07D0554694100DB518D /* MTStatusBarOverlay */ = {
@@ -170,7 +170,7 @@
 			attributes = {
 				LastUpgradeCheck = 0940;
 				TargetAttributes = {
-					A9478ECF21170F6F000215DA = {
+					A9478EE12117158D000215DA = {
 						CreatedOnToolsVersion = 9.4.1;
 						DevelopmentTeam = Y6BEBK9HD8;
 						ProvisioningStyle = Automatic;
@@ -193,13 +193,13 @@
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* MTStatusBarOverlay */,
-				A9478ECF21170F6F000215DA /* MTStatusBarOverlayFramework */,
+				A9478EE12117158D000215DA /* MTStatusBarOverlayKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A9478ECE21170F6F000215DA /* Resources */ = {
+		A9478EE02117158D000215DA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -209,11 +209,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A9478ECB21170F6F000215DA /* Sources */ = {
+		A9478EDD2117158D000215DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9478ED92117101B000215DA /* MTStatusBarOverlay.m in Sources */,
+				A9478EEB211715AF000215DA /* MTStatusBarOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +343,7 @@
 			};
 			name = Release;
 		};
-		A9478ED521170F6F000215DA /* Debug */ = {
+		A9478EE82117158D000215DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -376,13 +376,13 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = MTStatusBarOverlay/Info.plist;
+				INFOPLIST_FILE = MTStatusBarOverlayKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nousdigital.MTStatusBarOverlay;
-				PRODUCT_NAME = MTStatusBarOverlay;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nousdigital.MTStatusBarOverlayKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -390,7 +390,7 @@
 			};
 			name = Debug;
 		};
-		A9478ED621170F6F000215DA /* Release */ = {
+		A9478EE92117158D000215DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -421,13 +421,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = MTStatusBarOverlay/Info.plist;
+				INFOPLIST_FILE = MTStatusBarOverlayKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nousdigital.MTStatusBarOverlay;
-				PRODUCT_NAME = MTStatusBarOverlay;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nousdigital.MTStatusBarOverlayKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -457,11 +457,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A9478ED721170F6F000215DA /* Build configuration list for PBXNativeTarget "MTStatusBarOverlayFramework" */ = {
+		A9478EE72117158D000215DA /* Build configuration list for PBXNativeTarget "MTStatusBarOverlayKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A9478ED521170F6F000215DA /* Debug */,
-				A9478ED621170F6F000215DA /* Release */,
+				A9478EE82117158D000215DA /* Debug */,
+				A9478EE92117158D000215DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

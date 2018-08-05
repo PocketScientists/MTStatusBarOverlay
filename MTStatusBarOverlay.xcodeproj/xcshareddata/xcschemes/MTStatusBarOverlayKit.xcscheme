@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A9478ECF21170F6F000215DA"
-               BuildableName = "MTStatusBarOverlay.framework"
-               BlueprintName = "MTStatusBarOverlayFramework"
+               BlueprintIdentifier = "A9478EE12117158D000215DA"
+               BuildableName = "MTStatusBarOverlayKit.framework"
+               BlueprintName = "MTStatusBarOverlayKit"
                ReferencedContainer = "container:MTStatusBarOverlay.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A9478ECF21170F6F000215DA"
-            BuildableName = "MTStatusBarOverlay.framework"
-            BlueprintName = "MTStatusBarOverlayFramework"
+            BlueprintIdentifier = "A9478EE12117158D000215DA"
+            BuildableName = "MTStatusBarOverlayKit.framework"
+            BlueprintName = "MTStatusBarOverlayKit"
             ReferencedContainer = "container:MTStatusBarOverlay.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A9478ECF21170F6F000215DA"
-            BuildableName = "MTStatusBarOverlay.framework"
-            BlueprintName = "MTStatusBarOverlayFramework"
+            BlueprintIdentifier = "A9478EE12117158D000215DA"
+            BuildableName = "MTStatusBarOverlayKit.framework"
+            BlueprintName = "MTStatusBarOverlayKit"
             ReferencedContainer = "container:MTStatusBarOverlay.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
